@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex-wrapper" style="margin-top: 100px;">
+
+    <div class="title-wrapper">
+      
+
+      <h2 class="h2 section-title section-subtitle" style="font-size: 40px;">Qidiruv natijasi</h2>
+    </div>
+<ul class="movies-list">
+
+{% for i in javob %}
+<li style="margin-top: 40px;">
+  <div class="movie-card">
+
+    <a href="{% url 'movie_detail' i.id %}">
+      <figure class="card-banner">
+        <img src="{{ i.image.url }}" alt="The Northman movie poster" style="width: 100%; height: 100%;">
+      </figure>
+    </a>
+
+    <div class="title-wrapper">
+      <a href="./movie-details.html">
+        <h3 class="card-title">{{ i.name }}</h3>
+      </a>
+
+      <time datetime="2022">{{ i.time.year }}</time>
+    </div>
+
+    <div class="card-meta">
+      <div class="badge badge-outline">HD</div>
+
+      <div class="duration">
+        <i class="fa fa-eye"></i>
+                          
+        <time datetime="PT137M">{{ i.see }}</time>
+      </div>
+
+    
+    </div>
+
+  </div>
+</li>
+
+{% endfor %}
+</ul>
+</div>
+
+{% endblock content %}

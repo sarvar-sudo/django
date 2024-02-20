@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<main>
+  <article>
+
+    <!-- 
+        - #HERO
+      -->
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="hero-content">
+
+          <p class="hero-subtitle">Filmlane</p>
+
+          <h1 class="h1 hero-title">
+            Unlimited <strong>Movie</strong>, TVs Shows, & More.
+          </h1>
+
+          <div class="meta-wrapper">
+
+            <div class="badge-wrapper">
+              <div class="badge badge-fill">PG 18</div>
+
+              <div class="badge badge-outline">HD</div>
+            </div>
+
+            <div class="ganre-wrapper">
+              <a href="#">Romance,</a>
+
+              <a href="#">Drama</a>
+            </div>
+
+            <div class="date-time">
+
+              <div>
+                <ion-icon name="calendar-outline"></ion-icon>
+
+                <time datetime="2022">2022</time>
+              </div>
+
+              <div>
+                <ion-icon name="time-outline"></ion-icon>
+
+                <time datetime="PT128M">128 min</time>
+              </div>
+
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary">
+            <ion-icon name="play"></ion-icon>
+
+            <span>Watch now</span>
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 
+        - #UPCOMING
+      -->
+
+    <section class="upcoming">
+      <div class="container">
+
+        <div class="flex-wrapper">
+
+          <div class="title-wrapper">
+            <p class="section-subtitle">Online Streaming</p>
+
+            <h2 class="h2 section-title">Upcoming Movies</h2>
+          </div>
+
+          <ul class="filter-list">
+
+            <li>
+              <button class="filter-btn">Movies</button>
+            </li>
+
+            <li>
+              <button class="filter-btn">TV Shows</button>
+            </li>
+
+            <li>
+              <button class="filter-btn">Anime</button>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="movies-list  has-scrollbar">
+          {% for i in kino %}
+          <li>
+            <div class="movie-card">
+
+              <a href="{% url 'movie_detail' i.id %}">
+                <figure class="card-banner">
+                  <img src="{{ i.image.url }}" alt="The Northman movie poster" style="width: 100%; height: 100%;">
+                </figure>
+              </a>
+
+              <div class="title-wrapper">
+                <a href="{% url 'movie_detail' i.id %}">
+                  <h3 class="card-title">{{ i.name }}</h3>
+                </a>
+
+                <time datetime="2022">{{ i.time.year }}</time>
+              </div>
+
+              <div class="card-meta">
+                <div class="badge badge-outline">HD</div>
+
+                <div class="duration">
+                  <i class="fa fa-eye"></i>
+
+                  <time datetime="PT137M">{{ i.see }}</time>
+                </div>
+
+
+              </div>
+
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 
+        - #SERVICE
+      -->
+
+
+
+
+
+    <!-- 
+        - #TOP RATED
+      -->
+
+    <section class="top-rated">
+      <div class="container">
+
+        <p class="section-subtitle">Online Streaming</p>
+
+        <h2 class="h2 section-title">Top Rated Movies</h2>
+
+        <ul class="filter-list">
+
+          <li>
+            <button class="filter-btn">Movies</button>
+          </li>
+
+          <li>
+            <button class="filter-btn">TV Shows</button>
+          </li>
+
+          <li>
+            <button class="filter-btn">Documentary</button>
+          </li>
+
+          <li>
+            <button class="filter-btn">Sports</button>
+          </li>
+
+        </ul>
+
+        <ul class="movies-list">
+
+          {% for i in kino1 %}
+          <li>
+            <div class="movie-card">
+
+              <a href="{% url 'movie_detail' i.id %}">
+                <figure class="card-banner">
+                  <img src="{{ i.image.url }}" alt="The Northman movie poster" style="width: 100%; height: 100%;">
+                </figure>
+              </a>
+
+              <div class="title-wrapper">
+                <a href="{% url 'movie_detail' i.id %}">
+                  <h3 class="card-title">{{ i.name }}</h3>
+                </a>
+
+                <time datetime="2022">{{ i.time.year }}</time>
+              </div>
+
+              <div class="card-meta">
+                <div class="badge badge-outline">HD</div>
+
+                <div class="duration">
+                  <i class="fa fa-eye"></i>
+
+                  <time datetime="PT137M">{{ i.see }}</time>
+                </div>
+
+
+              </div>
+
+            </div>
+          </li>
+
+          {% endfor %}
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 
+        - #TV SERIES
+      -->
+
+    <section class="tv-series">
+      <div class="container">
+
+        <p class="section-subtitle">Best TV Live</p>
+
+        <h2 class="h2 section-title">World Best TV Live</h2>
+
+        <ul class="movies-list">
+
+          {% for i in live_ch %}
+          <li>
+            <div class="movie-card">
+
+              <a href="{% url 'channel_detail' i.id %}">
+                <figure class="card-banner">
+                  <img src="{{ i.image.url }}" alt="The Northman movie poster" style="width: 100%; height: 100%;">
+                </figure>
+              </a>
+
+              <div class="title-wrapper">
+                <a href="{% url 'channel_detail' i.id %}">
+                  <h3 class="card-title">{{ i.name }}</h3>
+                </a>
+
+                <time datetime="2022">{{ i.time.year }}</time>
+              </div>
+
+              <div class="card-meta">
+                <div class="badge badge-outline">HD</div>
+
+                <div class="duration">
+                  <i class="fa fa-eye"></i>
+
+                  <time datetime="PT137M">{{ i.see }}</time>
+                </div>
+
+
+              </div>
+
+            </div>
+          </li>
+
+          {% endfor %}
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 
+        - #CTA
+      -->
+
+    <section class="cta">
+      <div class="container">
+
+        <div class="title-wrapper">
+          <h2 class="cta-title">Sayt haqida fikringizni qoldiring</h2>
+
+        </div>
+
+        <form method="POST" class="cta-form">{% csrf_token %}
+           
+          <input type="text" name="comment" required="required" placeholder="Enter your email" class="email-field">
+
+          <button type="submit" class="cta-form-btn">Jonatish</button>
+        </form>
+
+      </div>
+    </section>
+
+  </article>
+</main>
+
+
+
+
+
+<!-- 
+    - #FOOTER
+  -->
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div class="container">
+
+      <div class="footer-brand-wrapper">
+
+        <a href="{% url 'index' }" class="logo">
+          <img src="{% static 'images/logo.svg' %}" alt="Filmlane logo" >
+        </a>
+
+        <ul class="footer-list">
+
+          <li>
+            <a href="{% url 'index' %}" class="navbar-link">Movie</a>
+          </li>
+          <li>
+            <a href="{% url 'live_channel' %}" class="navbar-link">LIVE SHOWS</a>
+          </li>
+          <li>
+            <a href="{% url 'about' %}" class="navbar-link">ABOUT</a>
+          </li>
+
+
+
+        </ul>
+
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="quicklink-wrapper">
+
+
+
+        <ul class="social-list">
+
+          <li>
+            <a href="https://www.instagram.com/hamidovv.ii/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://t.me/ihamidov999" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.youtube.com/@ibrohimhamidov" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://mail.ru/ihamidov999@gmail.com" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+
+      <p class="copyright">
+        &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+      </p>
+
+  
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+
+<!-- 
+    - #GO TO TOP
+  -->
+
+<a href="#top" class="go-top" data-go-top>
+  <ion-icon name="chevron-up"></ion-icon>
+</a>
+
+
+
+
+
+<!-- 
+    - custom js link
+  -->
+
+{% endblock content %}
